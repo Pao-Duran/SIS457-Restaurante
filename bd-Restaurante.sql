@@ -133,7 +133,6 @@ VALUES ('Pablo','Padilla','Arandia ','14181556','47852136');
 INSERT INTO Cliente(nombre,primerApellido,segundoApellido,cedulaIdentidad,Telefono)
 VALUES ('Mariana','Velazco','Gutierrez','7895411','16457845');
 
-
 SELECT *FROM Cliente 
 
 -- PLATOS
@@ -146,7 +145,6 @@ AS
 
   INSERT INTO Platos(nombre,precio)
   VALUES ('Lasaña',45);
-
 
   SELECT *FROM Platos 
 
