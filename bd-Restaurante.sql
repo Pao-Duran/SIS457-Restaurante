@@ -32,7 +32,7 @@ nombre VARCHAR (50) NOT NULL,
 primerApellido VARCHAR (30) NOT NULL,
 segundoApellido VARCHAR(30) NOT NULL,
 cedulaIdentidad VARCHAR (10) NOT NULL,
-telefono VARCHAR (30) NOT NULL
+telefono BIGINT NOT NULL
 );
 
 CREATE TABLE Empleado (
@@ -40,7 +40,7 @@ id INT PRIMARY KEY IDENTITY(1,1),
 nombre VARCHAR(30) NOT NULL,
 primerApellido VARCHAR (30) NOT NULL,
 segundoApellido VARCHAR(30) NOT NULL,
-telefono VARCHAR (30) NOT NULL,
+telefono BIGINT NOT NULL,
 direccion VARCHAR(30) NOT NULL,
 cargo VARCHAR(30) NOT NULL
 );
