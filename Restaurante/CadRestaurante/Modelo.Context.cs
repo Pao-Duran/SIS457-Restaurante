@@ -34,6 +34,7 @@ namespace CadRestaurante
         public virtual DbSet<Mesa> Mesa { get; set; }
         public virtual DbSet<Platos> Platos { get; set; }
         public virtual DbSet<Reserva> Reserva { get; set; }
+        public virtual DbSet<Bebida> Bebida { get; set; }
     
         public virtual ObjectResult<paClienteListar_Result> paClienteListar(string parametro)
         {
@@ -96,6 +97,15 @@ namespace CadRestaurante
                 new ObjectParameter("parametro", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paReservaListar_Result>("paReservaListar", parametroParameter);
+        }
+    
+        public virtual ObjectResult<paBebidaListar_Result> paBebidaListar(string parametro)
+        {
+            var parametroParameter = parametro != null ?
+                new ObjectParameter("parametro", parametro) :
+                new ObjectParameter("parametro", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<paBebidaListar_Result>("paBebidaListar", parametroParameter);
         }
     }
 }

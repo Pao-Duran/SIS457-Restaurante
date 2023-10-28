@@ -19,6 +19,8 @@
         <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Mesa" ManuallyRouted="false" />
         <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Platos" ManuallyRouted="false" />
         <AssociationConnector Association="RestauranteModel.fk_Reserva_Mesa" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="RestauranteModel.Bebida" Width="1.5" PointX="0.75" PointY="8.75" />
+        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Bebida" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

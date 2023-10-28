@@ -22,8 +22,7 @@ DROP TABLE Platos;
 DROP TABLE Factura;
 DROP TABLE detalleFactura;
 DROP TABLE Reserva;
-
-
+DROP TABLE Bebida;
 --CREACION DE TABLAS 
 
 CREATE TABLE Cliente (
@@ -71,12 +70,14 @@ id INT PRIMARY KEY IDENTITY(1,1),
 idFactura INT NOT NULL,
 idEmpleado INT NOT NULL,
 idPlato INT NOT NULL,
+idBebida INT NOT NULL,
 idMesa INT NOT NULL,
 
  CONSTRAINT fk_detalleFactura_Factura FOREIGN KEY(idFactura) REFERENCES Factura(id),
  CONSTRAINT fk_detalleFactura_Empleado FOREIGN KEY(idEmpleado) REFERENCES Empleado(id),
  CONSTRAINT fk_detalleFactura_Platos FOREIGN KEY(idPlato) REFERENCES Platos(id),
- CONSTRAINT fk_detalleFactura_Mesa FOREIGN KEY(idMesa) REFERENCES Mesa(id)
+ CONSTRAINT fk_detalleFactura_Mesa FOREIGN KEY(idMesa) REFERENCES Mesa(id),
+ CONSTRAINT fk_detalleFactura_Bebida FOREIGN KEY(idBebida) REFERENCES Bebida(id),
 
 );
 
@@ -90,6 +91,16 @@ CONSTRAINT fk_Reserva_Cliente FOREIGN KEY(idCliente) REFERENCES Cliente(id),
 CONSTRAINT fk_Reserva_Mesa FOREIGN KEY(idMesa) REFERENCES Mesa(id)
 
 );
+
+CREATE TABLE Bebida (
+id INT PRIMARY KEY IDENTITY(1,1),
+nombre VARCHAR (50) NOT NULL,
+precio DECIMAL NOT NULL,
+marca VARCHAR(50),
+descripcion VARCHAR(100) NOT NULL
+);
+
+
 
 ALTER TABLE Cliente  ADD usuarioRegistro VARCHAR (20) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE Cliente ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
@@ -118,6 +129,10 @@ ALTER TABLE Platos ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: eliminacion lo
 ALTER TABLE Reserva  ADD usuarioRegistro VARCHAR (20) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE Reserva ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
 ALTER TABLE Reserva ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: eliminacion logica, 0: inactivo, 1: activo
+
+ALTER TABLE Bebida  ADD usuarioRegistro VARCHAR (20) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Bebida ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Bebida ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: eliminacion logica, 0: inactivo, 1: activo
 
 --CLIENTES
 CREATE PROC paClienteListar @parametro Varchar(50)
@@ -221,3 +236,16 @@ AS
 
 
   SELECT *FROM Reserva 
+
+--BEBIDA
+CREATE PROC paBebidaListar @parametro VARCHAR(50)
+AS
+  SELECT id, nombre, precio, marca, descripcion, usuarioRegistro,fechaRegistro, estado 
+  FROM Bebida
+  WHERE estado <> -1 AND descripcion LIKE '%'+ REPLACE (@parametro,' ','%')+'%';
+
+  INSERT INTO Bebida(nombre, precio,marca,descripcion)
+  VALUES ('Coca Cola', 14,'Company Coca Cola', 'bebida gaseosa de 3 lts.');
+
+
+  SELECT *FROM Bebida 

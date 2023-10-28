@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClnRestaurante
 {
-    internal class FacturaCln
+    public class FacturaCln
     {
         public static int insertar(Factura factura)
         {

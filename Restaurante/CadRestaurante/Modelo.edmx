@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="RestauranteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bebida">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="marca" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuarioRegistro" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="smallint" Nullable="false" />
+        </EntityType>
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="id" />
@@ -27,10 +40,8 @@
           <Property Name="idFactura" Type="int" Nullable="false" />
           <Property Name="idEmpleado" Type="int" Nullable="false" />
           <Property Name="idPlato" Type="int" Nullable="false" />
+          <Property Name="idBebida" Type="int" Nullable="false" />
           <Property Name="idMesa" Type="int" Nullable="false" />
-          <Property Name="usuarioRegistro" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
-          <Property Name="estado" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -91,6 +102,18 @@
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
           <Property Name="estado" Type="smallint" Nullable="false" />
         </EntityType>
+        <Association Name="fk_detalleFactura_Bebida">
+          <End Role="Bebida" Type="Self.Bebida" Multiplicity="1" />
+          <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bebida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detalleFactura">
+              <PropertyRef Name="idBebida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_detalleFactura_Empleado">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
           <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
@@ -175,6 +198,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="paBebidaListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parametro" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="paClienteListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="parametro" Type="varchar" Mode="In" />
         </Function>
@@ -197,6 +223,7 @@
           <Parameter Name="parametro" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="RestauranteModelStoreContainer">
+          <EntitySet Name="Bebida" EntityType="Self.Bebida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
@@ -204,6 +231,10 @@
           <EntitySet Name="Mesa" EntityType="Self.Mesa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Platos" EntityType="Self.Platos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_detalleFactura_Bebida" Association="Self.fk_detalleFactura_Bebida">
+            <End Role="Bebida" EntitySet="Bebida" />
+            <End Role="detalleFactura" EntitySet="detalleFactura" />
+          </AssociationSet>
           <AssociationSet Name="fk_detalleFactura_Empleado" Association="Self.fk_detalleFactura_Empleado">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="detalleFactura" EntitySet="detalleFactura" />
@@ -269,6 +300,8 @@
           <NavigationProperty Name="Factura" Relationship="Self.fk_detalleFactura_Factura" FromRole="detalleFactura" ToRole="Factura" />
           <NavigationProperty Name="Mesa" Relationship="Self.fk_detalleFactura_Mesa" FromRole="detalleFactura" ToRole="Mesa" />
           <NavigationProperty Name="Platos" Relationship="Self.fk_detalleFactura_Platos" FromRole="detalleFactura" ToRole="Platos" />
+          <Property Name="idBebida" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bebida" Relationship="RestauranteModel.fk_detalleFactura_Bebida" FromRole="detalleFactura" ToRole="Bebida" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -464,20 +497,28 @@
           <Parameter Name="parametro" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="paDetalleFacturaListar" ReturnType="Collection(RestauranteModel.paDetalleFacturaListar_Result)">
-            <Parameter Name="parametro" Mode="In" Type="String" />
+          <Parameter Name="parametro" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="paEmpleadoListar" ReturnType="Collection(RestauranteModel.paEmpleadoListar_Result)">
-            <Parameter Name="parametro" Mode="In" Type="String" />
+          <Parameter Name="parametro" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="paFacturaListar" ReturnType="Collection(RestauranteModel.paFacturaListar_Result)">
-            <Parameter Name="parametro" Mode="In" Type="String" />
+          <Parameter Name="parametro" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="paMesaListar" ReturnType="Collection(RestauranteModel.paMesaListar_Result)">
-            <Parameter Name="parametro" Mode="In" Type="String" />
+          <Parameter Name="parametro" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="paReservaListar" ReturnType="Collection(RestauranteModel.paReservaListar_Result)">
-            <Parameter Name="parametro" Mode="In" Type="String" />
+          <Parameter Name="parametro" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Bebida" EntityType="RestauranteModel.Bebida" />
+          <FunctionImport Name="paBebidaListar" ReturnType="Collection(RestauranteModel.paBebidaListar_Result)">
+          <Parameter Name="parametro" Mode="In" Type="String" />
+          </FunctionImport>
+          <AssociationSet Name="fk_detalleFactura_Bebida" Association="RestauranteModel.fk_detalleFactura_Bebida">
+            <End Role="Bebida" EntitySet="Bebida" />
+            <End Role="detalleFactura" EntitySet="detalleFactura" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="paClienteListar_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -541,6 +582,42 @@
           <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
           <Property Type="Int16" Name="estado" Nullable="false" />
         </ComplexType>
+        <EntityType Name="Bebida">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="precio" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="usuarioRegistro" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="detalleFactura" Relationship="RestauranteModel.fk_detalleFactura_Bebida" FromRole="Bebida" ToRole="detalleFactura" />
+        </EntityType>
+        <ComplexType Name="paBebidaListar_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Decimal" Name="precio" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="marca" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuarioRegistro" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
+          <Property Type="Int16" Name="estado" Nullable="false" />
+        </ComplexType>
+        <Association Name="fk_detalleFactura_Bebida">
+          <End Type="RestauranteModel.Bebida" Role="Bebida" Multiplicity="1" />
+          <End Type="RestauranteModel.detalleFactura" Role="detalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bebida">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detalleFactura">
+              <PropertyRef Name="idBebida" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -565,15 +642,13 @@
           <EntitySetMapping Name="detalleFactura">
             <EntityTypeMapping TypeName="RestauranteModel.detalleFactura">
               <MappingFragment StoreEntitySet="detalleFactura">
+                <ScalarProperty Name="idBebida" ColumnName="idBebida" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idFactura" ColumnName="idFactura" />
                 <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
                 <ScalarProperty Name="idPlato" ColumnName="idPlato" />
                 <ScalarProperty Name="idMesa" ColumnName="idMesa" />
-                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
-                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Empleado">
@@ -724,6 +799,34 @@
                 <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="idMesa" ColumnName="idMesa" />
                 <ScalarProperty Name="fechaReserva" ColumnName="fechaReserva" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Bebida">
+            <EntityTypeMapping TypeName="RestauranteModel.Bebida">
+              <MappingFragment StoreEntitySet="Bebida">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="paBebidaListar" FunctionName="RestauranteModel.Store.paBebidaListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestauranteModel.paBebidaListar_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
                 <ScalarProperty Name="estado" ColumnName="estado" />

@@ -22,10 +22,12 @@ namespace CadRestaurante
         public string usuarioRegistro { get; set; }
         public System.DateTime fechaRegistro { get; set; }
         public short estado { get; set; }
+        public int idBebida { get; set; }
     
         public virtual Empleado Empleado { get; set; }
         public virtual Factura Factura { get; set; }
         public virtual Mesa Mesa { get; set; }
         public virtual Platos Platos { get; set; }
+        public virtual Bebida Bebida { get; set; }
     }
 }
