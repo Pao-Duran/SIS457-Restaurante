@@ -63,9 +63,69 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _239629135_239705251504946_8514359394720528580_n {
+            get {
+                object obj = ResourceManager.GetObject("239629135_239705251504946_8514359394720528580_n", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _239629135_239705251504946_8514359394720528580_n1 {
+            get {
+                object obj = ResourceManager.GetObject("239629135_239705251504946_8514359394720528580_n1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _429077_menu_de_restaurante_sem_costura_de_fundo_vetor {
+            get {
+                object obj = ResourceManager.GetObject("429077-menu-de-restaurante-sem-costura-de-fundo-vetor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ca02fe3b342e97d46c23ec9b4a0078c1 {
+            get {
+                object obj = ResourceManager.GetObject("ca02fe3b342e97d46c23ec9b4a0078c1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap decoracion_restaurante_rustico {
             get {
                 object obj = ResourceManager.GetObject("decoracion-restaurante-rustico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_accede_redondeado_derecho_65 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-accede-redondeado-derecho-65", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_cancelar_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cancelar-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,6 +236,26 @@ namespace CpRestaurante.Properties {
         internal static System.Drawing.Bitmap icons8_restaurante_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-restaurante-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_restaurante_32__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-restaurante-32 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_verificar_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-verificar-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

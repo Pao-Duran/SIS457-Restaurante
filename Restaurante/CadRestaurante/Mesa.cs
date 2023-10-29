@@ -17,8 +17,8 @@ namespace CadRestaurante
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Mesa()
         {
-            this.detalleFactura = new HashSet<detalleFactura>();
             this.Reserva = new HashSet<Reserva>();
+            this.detalleFactura = new HashSet<detalleFactura>();
         }
     
         public int id { get; set; }
@@ -28,8 +28,8 @@ namespace CadRestaurante
         public short estado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<detalleFactura> detalleFactura { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reserva> Reserva { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<detalleFactura> detalleFactura { get; set; }
     }
 }

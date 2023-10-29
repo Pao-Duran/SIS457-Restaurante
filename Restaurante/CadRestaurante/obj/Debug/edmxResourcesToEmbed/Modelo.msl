@@ -16,18 +16,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="detalleFactura">
-      <EntityTypeMapping TypeName="RestauranteModel.detalleFactura">
-        <MappingFragment StoreEntitySet="detalleFactura">
-          <ScalarProperty Name="idBebida" ColumnName="idBebida" />
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="idFactura" ColumnName="idFactura" />
-          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
-          <ScalarProperty Name="idPlato" ColumnName="idPlato" />
-          <ScalarProperty Name="idMesa" ColumnName="idMesa" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Empleado">
       <EntityTypeMapping TypeName="RestauranteModel.Empleado">
         <MappingFragment StoreEntitySet="Empleado">
@@ -210,5 +198,20 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="detalleFactura">
+      <EntityTypeMapping TypeName="RestauranteModel.detalleFactura">
+        <MappingFragment StoreEntitySet="detalleFactura">
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+          <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+          <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+          <ScalarProperty Name="idBebida" ColumnName="idBebida" />
+          <ScalarProperty Name="idPlato" ColumnName="idPlato" />
+          <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+          <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

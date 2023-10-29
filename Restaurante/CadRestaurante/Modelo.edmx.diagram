@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="64a9cb3541dc4ee89c14d1a6f82c8a8a" Name="Diagram1">
         <EntityTypeShape EntityType="RestauranteModel.Cliente" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="RestauranteModel.detalleFactura" Width="1.5" PointX="2.375" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RestauranteModel.Empleado" Width="1.5" PointX="3.625" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="RestauranteModel.Factura" Width="1.5" PointX="5.125" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="RestauranteModel.Mesa" Width="1.5" PointX="4.875" PointY="0.5" IsExpanded="true" />
@@ -14,13 +13,16 @@
         <EntityTypeShape EntityType="RestauranteModel.Reserva" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="RestauranteModel.fk_Factura_Cliente" ManuallyRouted="false" />
         <AssociationConnector Association="RestauranteModel.fk_Reserva_Cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Empleado" ManuallyRouted="false" />
-        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Factura" ManuallyRouted="false" />
-        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Mesa" ManuallyRouted="false" />
-        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Platos" ManuallyRouted="false" />
         <AssociationConnector Association="RestauranteModel.fk_Reserva_Mesa" ManuallyRouted="false" />
         <EntityTypeShape EntityType="RestauranteModel.Bebida" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="RestauranteModel.detalleFactura" Width="1.5" PointX="2.375" PointY="0.5" />
         <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Bebida" />
+        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Empleado" />
+        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Factura" />
+        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Mesa" />
+        <AssociationConnector Association="RestauranteModel.fk_detalleFactura_Platos" />
+        <EntityTypeShape EntityType="RestauranteModel.Usuario" Width="1.5" PointX="5.875" PointY="9.25" />
+        <AssociationConnector Association="RestauranteModel.fk_Usuario_Empleado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

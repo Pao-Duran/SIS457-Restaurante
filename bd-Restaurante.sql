@@ -23,7 +23,19 @@ DROP TABLE Factura;
 DROP TABLE detalleFactura;
 DROP TABLE Reserva;
 DROP TABLE Bebida;
+DROP TABLE Usuario
 --CREACION DE TABLAS 
+CREATE TABLE Usuario (
+  id INT PRIMARY KEY IDENTITY (1,1),
+  nombre VARCHAR(30) NOT NULL,
+  clave VARCHAR(10) NOT NULL,
+  idEmpleado INT NOT NULL,
+
+  CONSTRAINT fk_Usuario_Empleado FOREIGN KEY(idEmpleado) REFERENCES Empleado(id)
+
+);
+
+
 
 CREATE TABLE Cliente (
 id INT PRIMARY KEY IDENTITY (1,1),
@@ -100,6 +112,9 @@ marca VARCHAR(50),
 descripcion VARCHAR(100) NOT NULL
 );
 
+ALTER TABLE Usuario  ADD usuarioRegistro VARCHAR (20) NOT NULL DEFAULT SUSER_NAME();
+ALTER TABLE Usuario ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
+ALTER TABLE Usuario ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: eliminacion logica, 0: inactivo, 1: activo
 
 
 ALTER TABLE Cliente  ADD usuarioRegistro VARCHAR (20) NOT NULL DEFAULT SUSER_NAME();
@@ -133,6 +148,16 @@ ALTER TABLE Reserva ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: eliminacion l
 ALTER TABLE Bebida  ADD usuarioRegistro VARCHAR (20) NOT NULL DEFAULT SUSER_NAME();
 ALTER TABLE Bebida ADD fechaRegistro DATETIME NOT NULL DEFAULT GETDATE();
 ALTER TABLE Bebida ADD estado SMALLINT NOT NULL DEFAULT 1; -- -1: eliminacion logica, 0: inactivo, 1: activo
+
+--USUARIO
+CREATE PROC paUsuarioListar @parametro VARCHAR(50)
+AS
+  SELECT id,nombre,clave,idEmpleado,usuarioRegistro,fechaRegistro, estado
+  FROM Usuario
+  WHERE estado <> -1 AND nombre LIKE '%'+ REPLACE (@parametro,' ','%')+'%';
+
+
+  SELECT *FROM Usuario
 
 --CLIENTES
 CREATE PROC paClienteListar @parametro Varchar(50)

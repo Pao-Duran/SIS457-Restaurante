@@ -42,6 +42,9 @@
           <Property Name="idPlato" Type="int" Nullable="false" />
           <Property Name="idBebida" Type="int" Nullable="false" />
           <Property Name="idMesa" Type="int" Nullable="false" />
+          <Property Name="usuarioRegistro" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="smallint" Nullable="false" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -98,6 +101,18 @@
           <Property Name="idCliente" Type="int" Nullable="false" />
           <Property Name="idMesa" Type="int" Nullable="false" />
           <Property Name="fechaReserva" Type="datetime" Nullable="false" />
+          <Property Name="usuarioRegistro" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
+          <Property Name="estado" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="clave" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="idEmpleado" Type="int" Nullable="false" />
           <Property Name="usuarioRegistro" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
           <Property Name="estado" Type="smallint" Nullable="false" />
@@ -198,6 +213,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_Usuario_Empleado">
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="paBebidaListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="parametro" Type="varchar" Mode="In" />
         </Function>
@@ -222,6 +249,9 @@
         <Function Name="paReservaListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="parametro" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="paUsuarioListar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="parametro" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="RestauranteModelStoreContainer">
           <EntitySet Name="Bebida" EntityType="Self.Bebida" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
@@ -231,6 +261,7 @@
           <EntitySet Name="Mesa" EntityType="Self.Mesa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Platos" EntityType="Self.Platos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="fk_detalleFactura_Bebida" Association="Self.fk_detalleFactura_Bebida">
             <End Role="Bebida" EntitySet="Bebida" />
             <End Role="detalleFactura" EntitySet="detalleFactura" />
@@ -263,6 +294,10 @@
             <End Role="Mesa" EntitySet="Mesa" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
+          <AssociationSet Name="fk_Usuario_Empleado" Association="Self.fk_Usuario_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -284,25 +319,6 @@
           <NavigationProperty Name="Factura" Relationship="Self.fk_Factura_Cliente" FromRole="Cliente" ToRole="Factura" />
           <NavigationProperty Name="Reserva" Relationship="Self.fk_Reserva_Cliente" FromRole="Cliente" ToRole="Reserva" />
         </EntityType>
-        <EntityType Name="detalleFactura">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idFactura" Type="Int32" Nullable="false" />
-          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
-          <Property Name="idPlato" Type="Int32" Nullable="false" />
-          <Property Name="idMesa" Type="Int32" Nullable="false" />
-          <Property Name="usuarioRegistro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="estado" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="Empleado" Relationship="Self.fk_detalleFactura_Empleado" FromRole="detalleFactura" ToRole="Empleado" />
-          <NavigationProperty Name="Factura" Relationship="Self.fk_detalleFactura_Factura" FromRole="detalleFactura" ToRole="Factura" />
-          <NavigationProperty Name="Mesa" Relationship="Self.fk_detalleFactura_Mesa" FromRole="detalleFactura" ToRole="Mesa" />
-          <NavigationProperty Name="Platos" Relationship="Self.fk_detalleFactura_Platos" FromRole="detalleFactura" ToRole="Platos" />
-          <Property Name="idBebida" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Bebida" Relationship="RestauranteModel.fk_detalleFactura_Bebida" FromRole="detalleFactura" ToRole="Bebida" />
-        </EntityType>
         <EntityType Name="Empleado">
           <Key>
             <PropertyRef Name="id" />
@@ -317,7 +333,8 @@
           <Property Name="usuarioRegistro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="estado" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="detalleFactura" Relationship="Self.fk_detalleFactura_Empleado" FromRole="Empleado" ToRole="detalleFactura" />
+          <NavigationProperty Name="detalleFactura" Relationship="RestauranteModel.fk_detalleFactura_Empleado" FromRole="Empleado" ToRole="detalleFactura" />
+          <NavigationProperty Name="Usuario" Relationship="RestauranteModel.fk_Usuario_Empleado" FromRole="Empleado" ToRole="Usuario" />
         </EntityType>
         <EntityType Name="Factura">
           <Key>
@@ -330,7 +347,7 @@
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="estado" Type="Int16" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.fk_Factura_Cliente" FromRole="Factura" ToRole="Cliente" />
-          <NavigationProperty Name="detalleFactura" Relationship="Self.fk_detalleFactura_Factura" FromRole="Factura" ToRole="detalleFactura" />
+          <NavigationProperty Name="detalleFactura" Relationship="RestauranteModel.fk_detalleFactura_Factura" FromRole="Factura" ToRole="detalleFactura" />
         </EntityType>
         <EntityType Name="Mesa">
           <Key>
@@ -341,8 +358,8 @@
           <Property Name="usuarioRegistro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="estado" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="detalleFactura" Relationship="Self.fk_detalleFactura_Mesa" FromRole="Mesa" ToRole="detalleFactura" />
           <NavigationProperty Name="Reserva" Relationship="Self.fk_Reserva_Mesa" FromRole="Mesa" ToRole="Reserva" />
+          <NavigationProperty Name="detalleFactura" Relationship="RestauranteModel.fk_detalleFactura_Mesa" FromRole="Mesa" ToRole="detalleFactura" />
         </EntityType>
         <EntityType Name="Platos">
           <Key>
@@ -354,7 +371,7 @@
           <Property Name="usuarioRegistro" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="estado" Type="Int16" Nullable="false" />
-          <NavigationProperty Name="detalleFactura" Relationship="Self.fk_detalleFactura_Platos" FromRole="Platos" ToRole="detalleFactura" />
+          <NavigationProperty Name="detalleFactura" Relationship="RestauranteModel.fk_detalleFactura_Platos" FromRole="Platos" ToRole="detalleFactura" />
         </EntityType>
         <EntityType Name="Reserva">
           <Key>
@@ -394,54 +411,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_detalleFactura_Empleado">
-          <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
-          <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Empleado">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="detalleFactura">
-              <PropertyRef Name="idEmpleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_detalleFactura_Factura">
-          <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
-          <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Factura">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="detalleFactura">
-              <PropertyRef Name="idFactura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_detalleFactura_Mesa">
-          <End Role="Mesa" Type="Self.Mesa" Multiplicity="1" />
-          <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Mesa">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="detalleFactura">
-              <PropertyRef Name="idMesa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_detalleFactura_Platos">
-          <End Role="Platos" Type="Self.Platos" Multiplicity="1" />
-          <End Role="detalleFactura" Type="Self.detalleFactura" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Platos">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="detalleFactura">
-              <PropertyRef Name="idPlato" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_Reserva_Mesa">
           <End Role="Mesa" Type="Self.Mesa" Multiplicity="1" />
           <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
@@ -456,7 +425,6 @@
         </Association>
         <EntityContainer Name="RestauranteEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
-          <EntitySet Name="detalleFactura" EntityType="Self.detalleFactura" />
           <EntitySet Name="Empleado" EntityType="Self.Empleado" />
           <EntitySet Name="Factura" EntityType="Self.Factura" />
           <EntitySet Name="Mesa" EntityType="Self.Mesa" />
@@ -469,22 +437,6 @@
           <AssociationSet Name="fk_Reserva_Cliente" Association="Self.fk_Reserva_Cliente">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Reserva" EntitySet="Reserva" />
-          </AssociationSet>
-          <AssociationSet Name="fk_detalleFactura_Empleado" Association="Self.fk_detalleFactura_Empleado">
-            <End Role="Empleado" EntitySet="Empleado" />
-            <End Role="detalleFactura" EntitySet="detalleFactura" />
-          </AssociationSet>
-          <AssociationSet Name="fk_detalleFactura_Factura" Association="Self.fk_detalleFactura_Factura">
-            <End Role="Factura" EntitySet="Factura" />
-            <End Role="detalleFactura" EntitySet="detalleFactura" />
-          </AssociationSet>
-          <AssociationSet Name="fk_detalleFactura_Mesa" Association="Self.fk_detalleFactura_Mesa">
-            <End Role="Mesa" EntitySet="Mesa" />
-            <End Role="detalleFactura" EntitySet="detalleFactura" />
-          </AssociationSet>
-          <AssociationSet Name="fk_detalleFactura_Platos" Association="Self.fk_detalleFactura_Platos">
-            <End Role="Platos" EntitySet="Platos" />
-            <End Role="detalleFactura" EntitySet="detalleFactura" />
           </AssociationSet>
           <AssociationSet Name="fk_Reserva_Mesa" Association="Self.fk_Reserva_Mesa">
             <End Role="Mesa" EntitySet="Mesa" />
@@ -515,10 +467,35 @@
           <FunctionImport Name="paBebidaListar" ReturnType="Collection(RestauranteModel.paBebidaListar_Result)">
           <Parameter Name="parametro" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="detalleFactura" EntityType="RestauranteModel.detalleFactura" />
           <AssociationSet Name="fk_detalleFactura_Bebida" Association="RestauranteModel.fk_detalleFactura_Bebida">
             <End Role="Bebida" EntitySet="Bebida" />
             <End Role="detalleFactura" EntitySet="detalleFactura" />
           </AssociationSet>
+          <AssociationSet Name="fk_detalleFactura_Empleado" Association="RestauranteModel.fk_detalleFactura_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="detalleFactura" EntitySet="detalleFactura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detalleFactura_Factura" Association="RestauranteModel.fk_detalleFactura_Factura">
+            <End Role="Factura" EntitySet="Factura" />
+            <End Role="detalleFactura" EntitySet="detalleFactura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detalleFactura_Mesa" Association="RestauranteModel.fk_detalleFactura_Mesa">
+            <End Role="Mesa" EntitySet="Mesa" />
+            <End Role="detalleFactura" EntitySet="detalleFactura" />
+          </AssociationSet>
+          <AssociationSet Name="fk_detalleFactura_Platos" Association="RestauranteModel.fk_detalleFactura_Platos">
+            <End Role="Platos" EntitySet="Platos" />
+            <End Role="detalleFactura" EntitySet="detalleFactura" />
+          </AssociationSet>
+          <EntitySet Name="Usuario" EntityType="RestauranteModel.Usuario" />
+          <AssociationSet Name="fk_Usuario_Empleado" Association="RestauranteModel.fk_Usuario_Empleado">
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <FunctionImport Name="paUsuarioListar" ReturnType="Collection(RestauranteModel.paUsuarioListar_Result)">
+            <Parameter Name="parametro" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="paClienteListar_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -606,6 +583,25 @@
           <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
           <Property Type="Int16" Name="estado" Nullable="false" />
         </ComplexType>
+        <EntityType Name="detalleFactura">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idFactura" Type="Int32" Nullable="false" />
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="idPlato" Type="Int32" Nullable="false" />
+          <Property Name="idBebida" Type="Int32" Nullable="false" />
+          <Property Name="idMesa" Type="Int32" Nullable="false" />
+          <Property Name="usuarioRegistro" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Bebida" Relationship="RestauranteModel.fk_detalleFactura_Bebida" FromRole="detalleFactura" ToRole="Bebida" />
+          <NavigationProperty Name="Empleado" Relationship="RestauranteModel.fk_detalleFactura_Empleado" FromRole="detalleFactura" ToRole="Empleado" />
+          <NavigationProperty Name="Factura" Relationship="RestauranteModel.fk_detalleFactura_Factura" FromRole="detalleFactura" ToRole="Factura" />
+          <NavigationProperty Name="Mesa" Relationship="RestauranteModel.fk_detalleFactura_Mesa" FromRole="detalleFactura" ToRole="Mesa" />
+          <NavigationProperty Name="Platos" Relationship="RestauranteModel.fk_detalleFactura_Platos" FromRole="detalleFactura" ToRole="Platos" />
+        </EntityType>
         <Association Name="fk_detalleFactura_Bebida">
           <End Type="RestauranteModel.Bebida" Role="Bebida" Multiplicity="1" />
           <End Type="RestauranteModel.detalleFactura" Role="detalleFactura" Multiplicity="*" />
@@ -618,6 +614,88 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_detalleFactura_Empleado">
+          <End Type="RestauranteModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="RestauranteModel.detalleFactura" Role="detalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detalleFactura">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detalleFactura_Factura">
+          <End Type="RestauranteModel.Factura" Role="Factura" Multiplicity="1" />
+          <End Type="RestauranteModel.detalleFactura" Role="detalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Factura">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detalleFactura">
+              <PropertyRef Name="idFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detalleFactura_Mesa">
+          <End Type="RestauranteModel.Mesa" Role="Mesa" Multiplicity="1" />
+          <End Type="RestauranteModel.detalleFactura" Role="detalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mesa">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detalleFactura">
+              <PropertyRef Name="idMesa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_detalleFactura_Platos">
+          <End Type="RestauranteModel.Platos" Role="Platos" Multiplicity="1" />
+          <End Type="RestauranteModel.detalleFactura" Role="detalleFactura" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Platos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="detalleFactura">
+              <PropertyRef Name="idPlato" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="clave" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+          <Property Name="usuarioRegistro" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="estado" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Empleado" Relationship="RestauranteModel.fk_Usuario_Empleado" FromRole="Usuario" ToRole="Empleado" />
+        </EntityType>
+        <Association Name="fk_Usuario_Empleado">
+          <End Type="RestauranteModel.Empleado" Role="Empleado" Multiplicity="1" />
+          <End Type="RestauranteModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empleado">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idEmpleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="paUsuarioListar_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="clave" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="idEmpleado" Nullable="false" />
+          <Property Type="String" Name="usuarioRegistro" Nullable="false" MaxLength="20" />
+          <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
+          <Property Type="Int16" Name="estado" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -637,18 +715,6 @@
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
               </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="detalleFactura">
-            <EntityTypeMapping TypeName="RestauranteModel.detalleFactura">
-              <MappingFragment StoreEntitySet="detalleFactura">
-                <ScalarProperty Name="idBebida" ColumnName="idBebida" />
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
-                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
-                <ScalarProperty Name="idPlato" ColumnName="idPlato" />
-                <ScalarProperty Name="idMesa" ColumnName="idMesa" />
-                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Empleado">
@@ -827,6 +893,47 @@
                 <ScalarProperty Name="precio" ColumnName="precio" />
                 <ScalarProperty Name="marca" ColumnName="marca" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="detalleFactura">
+            <EntityTypeMapping TypeName="RestauranteModel.detalleFactura">
+              <MappingFragment StoreEntitySet="detalleFactura">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="idMesa" ColumnName="idMesa" />
+                <ScalarProperty Name="idBebida" ColumnName="idBebida" />
+                <ScalarProperty Name="idPlato" ColumnName="idPlato" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="idFactura" ColumnName="idFactura" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="RestauranteModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
+                <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="paUsuarioListar" FunctionName="RestauranteModel.Store.paUsuarioListar">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RestauranteModel.paUsuarioListar_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="clave" ColumnName="clave" />
+                <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
                 <ScalarProperty Name="usuarioRegistro" ColumnName="usuarioRegistro" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
                 <ScalarProperty Name="estado" ColumnName="estado" />

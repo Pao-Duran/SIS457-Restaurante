@@ -49,7 +49,6 @@
             this.ribbonTab4 = new C1.Win.C1Ribbon.RibbonTab();
             this.ribbonGroup4 = new C1.Win.C1Ribbon.RibbonGroup();
             this.Clien = new C1.Win.C1Ribbon.RibbonButton();
-            this.ribbonButton3 = new C1.Win.C1Ribbon.RibbonButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -164,7 +163,7 @@
             this.ribbonTab3.Groups.Add(this.ribbonGroup3);
             this.ribbonTab3.Image = global::CpRestaurante.Properties.Resources.icons8_factura_32__1_;
             this.ribbonTab3.Name = "ribbonTab3";
-            this.ribbonTab3.Text = "Factura";
+            this.ribbonTab3.Text = "Caja";
             // 
             // ribbonGroup3
             // 
@@ -190,25 +189,16 @@
             // ribbonGroup4
             // 
             this.ribbonGroup4.Items.Add(this.Clien);
-            this.ribbonGroup4.Items.Add(this.ribbonButton3);
             this.ribbonGroup4.Name = "ribbonGroup4";
             this.ribbonGroup4.Text = "Administracion";
             // 
             // Clien
             // 
-            this.Clien.Description = "tabla de los clientes ";
+            this.Clien.Description = "tabla de los clientes y empleados";
             this.Clien.LargeImage = global::CpRestaurante.Properties.Resources.icons8_cliente_32;
             this.Clien.Name = "Clien";
             this.Clien.SmallImage = ((System.Drawing.Image)(resources.GetObject("Clien.SmallImage")));
-            this.Clien.Text = "Cliente";
-            // 
-            // ribbonButton3
-            // 
-            this.ribbonButton3.Description = "tabla de los empleados";
-            this.ribbonButton3.LargeImage = global::CpRestaurante.Properties.Resources.icons8_insignia_32;
-            this.ribbonButton3.Name = "ribbonButton3";
-            this.ribbonButton3.SmallImage = ((System.Drawing.Image)(resources.GetObject("ribbonButton3.SmallImage")));
-            this.ribbonButton3.Text = "Empelado";
+            this.Clien.Text = "Usuario";
             // 
             // pictureBox1
             // 
@@ -231,7 +221,9 @@
             this.Controls.Add(this.c1Ribbon1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = ":::Restaurante P y M :::";
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -263,7 +255,6 @@
         private C1.Win.C1Ribbon.RibbonTab ribbonTab4;
         private C1.Win.C1Ribbon.RibbonGroup ribbonGroup4;
         private C1.Win.C1Ribbon.RibbonButton Clien;
-        private C1.Win.C1Ribbon.RibbonButton ribbonButton3;
     }
 }
 

@@ -22,3 +22,4 @@ E:\SIS 457 - Proyecto\Restaurante\CpRestaurante\bin\Debug\C1.Win.C1Ribbon.4.5.2.
 E:\SIS 457 - Proyecto\Restaurante\CpRestaurante\bin\Debug\C1.Win.4.5.2.xml
 E:\SIS 457 - Proyecto\Restaurante\CpRestaurante\bin\Debug\C1.Win.C1Ribbon.4.5.2.xml
 E:\SIS 457 - Proyecto\Restaurante\CpRestaurante\obj\Debug\CpRestaurante.exe.licenses
+E:\SIS 457 - Proyecto\Restaurante\CpRestaurante\obj\Debug\CpRestaurante.FrmLogin.resources
