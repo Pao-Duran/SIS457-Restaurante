@@ -31,11 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.label1 = new System.Windows.Forms.Label();
             this.c1Ribbon1 = new C1.Win.C1Ribbon.C1Ribbon();
+            this.ribbonApplicationMenu1 = new C1.Win.C1Ribbon.RibbonApplicationMenu();
             this.ribbonBottomToolBar1 = new C1.Win.C1Ribbon.RibbonBottomToolBar();
             this.ribbonConfigToolBar1 = new C1.Win.C1Ribbon.RibbonConfigToolBar();
             this.ribbonQat1 = new C1.Win.C1Ribbon.RibbonQat();
-            this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
-            this.ribbonApplicationMenu1 = new C1.Win.C1Ribbon.RibbonApplicationMenu();
             this.ribbonTab1 = new C1.Win.C1Ribbon.RibbonTab();
             this.ribbonGroup1 = new C1.Win.C1Ribbon.RibbonGroup();
             this.btnPlatos = new C1.Win.C1Ribbon.RibbonButton();
@@ -49,6 +48,7 @@
             this.ribbonTab4 = new C1.Win.C1Ribbon.RibbonTab();
             this.ribbonGroup4 = new C1.Win.C1Ribbon.RibbonGroup();
             this.Clien = new C1.Win.C1Ribbon.RibbonButton();
+            this.ribbonTopToolBar1 = new C1.Win.C1Ribbon.RibbonTopToolBar();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.c1Ribbon1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -71,7 +71,7 @@
             // c1Ribbon1
             // 
             this.c1Ribbon1.ApplicationMenuHolder = this.ribbonApplicationMenu1;
-            this.c1Ribbon1.AutoSizeElement = C1.Framework.AutoSizeElement.Width;
+
             this.c1Ribbon1.BottomToolBarHolder = this.ribbonBottomToolBar1;
             this.c1Ribbon1.ConfigToolBarHolder = this.ribbonConfigToolBar1;
             this.c1Ribbon1.Location = new System.Drawing.Point(0, 0);
@@ -86,6 +86,11 @@
             this.c1Ribbon1.VisualStyle = C1.Win.C1Ribbon.VisualStyle.Office2007Blue;
             this.c1Ribbon1.RibbonEvent += new C1.Win.C1Ribbon.RibbonEventHandler(this.c1Ribbon1_RibbonEvent);
             // 
+            // ribbonApplicationMenu1
+            // 
+            this.ribbonApplicationMenu1.LargeImage = global::CpRestaurante.Properties.Resources.icons8_restaurante_32;
+            this.ribbonApplicationMenu1.Name = "ribbonApplicationMenu1";
+            // 
             // ribbonBottomToolBar1
             // 
             this.ribbonBottomToolBar1.Name = "ribbonBottomToolBar1";
@@ -97,15 +102,6 @@
             // ribbonQat1
             // 
             this.ribbonQat1.Name = "ribbonQat1";
-            // 
-            // ribbonTopToolBar1
-            // 
-            this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
-            // 
-            // ribbonApplicationMenu1
-            // 
-            this.ribbonApplicationMenu1.LargeImage = global::CpRestaurante.Properties.Resources.icons8_restaurante_32;
-            this.ribbonApplicationMenu1.Name = "ribbonApplicationMenu1";
             // 
             // ribbonTab1
             // 
@@ -128,6 +124,7 @@
             this.btnPlatos.Name = "btnPlatos";
             this.btnPlatos.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnPlatos.SmallImage")));
             this.btnPlatos.Text = "Platos";
+            this.btnPlatos.Click += new System.EventHandler(this.btnPlatos_Click);
             // 
             // btnBebidas
             // 
@@ -136,6 +133,7 @@
             this.btnBebidas.Name = "btnBebidas";
             this.btnBebidas.SmallImage = ((System.Drawing.Image)(resources.GetObject("btnBebidas.SmallImage")));
             this.btnBebidas.Text = "Bebidas";
+            this.btnBebidas.Click += new System.EventHandler(this.btnBebidas_Click);
             // 
             // ribbonTab2
             // 
@@ -199,6 +197,10 @@
             this.Clien.Name = "Clien";
             this.Clien.SmallImage = ((System.Drawing.Image)(resources.GetObject("Clien.SmallImage")));
             this.Clien.Text = "Usuario";
+            // 
+            // ribbonTopToolBar1
+            // 
+            this.ribbonTopToolBar1.Name = "ribbonTopToolBar1";
             // 
             // pictureBox1
             // 

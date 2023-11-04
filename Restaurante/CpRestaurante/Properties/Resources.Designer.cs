@@ -63,6 +63,26 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1140_diet_soda_study_esp_imgcache_rev_web_1000_575 {
+            get {
+                object obj = ResourceManager.GetObject("1140-diet-soda-study-esp.imgcache.rev.web.1000.575", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _20674622_comida_rápida_de_fondo_sin_fisuras {
+            get {
+                object obj = ResourceManager.GetObject("20674622-comida-rápida-de-fondo-sin-fisuras", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _239629135_239705251504946_8514359394720528580_n {
             get {
                 object obj = ResourceManager.GetObject("239629135_239705251504946_8514359394720528580_n", resourceCulture);
@@ -93,6 +113,16 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5c83164a83f9c0635de227c5be9461a6 {
+            get {
+                object obj = ResourceManager.GetObject("5c83164a83f9c0635de227c5be9461a6", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ca02fe3b342e97d46c23ec9b4a0078c1 {
             get {
                 object obj = ResourceManager.GetObject("ca02fe3b342e97d46c23ec9b4a0078c1", resourceCulture);
@@ -103,9 +133,71 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap CaldoDePollo {
+            get {
+                object obj = ResourceManager.GetObject("CaldoDePollo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap chorizos_chuquisaquenos_de_bolivia {
+            get {
+                object obj = ResourceManager.GetObject("chorizos-chuquisaquenos-de-bolivia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap comida_tipica_bolivia {
+            get {
+                object obj = ResourceManager.GetObject("comida-tipica-bolivia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap comida_tradicional_bolivia_receta {
+            get {
+                object obj = ResourceManager.GetObject("comida-tradicional-bolivia-receta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap decoracion_restaurante_rustico {
             get {
                 object obj = ResourceManager.GetObject("decoracion-restaurante-rustico", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fast_food_set_icons_fastfood_background_doodle_fast_food_icons_seamless_pattern_with_food_icons_food_icons_on_white_background_hand_drown_pattern_with_fast_food_icons_free_vector {
+            get {
+                object obj = ResourceManager.GetObject("fast-food-set-icons-fastfood-background-doodle-fast-food-icons-seamless-pattern-w" +
+                        "ith-food-icons-food-icons-on-white-background-hand-drown-pattern-with-fast-food-" +
+                        "icons-free-vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fricase_boliviano {
+            get {
+                object obj = ResourceManager.GetObject("fricase-boliviano", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +228,46 @@ namespace CpRestaurante.Properties {
         internal static System.Drawing.Bitmap icons8_cliente_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-cliente-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_cóctel_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cóctel-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_cóctel_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cóctel-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_cóctel_de_coco_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cóctel-de-coco-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_cóctel_de_coco_641 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cóctel-de-coco-641", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -233,6 +365,16 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_reajuste_salarial_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-reajuste-salarial-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_restaurante_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-restaurante-32", resourceCulture);
@@ -253,9 +395,79 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_soda_de_naranja_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-soda-de-naranja-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_verificar_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-verificar-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iStock_487402642 {
+            get {
+                object obj = ResourceManager.GetObject("iStock-487402642", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap istockphoto_1197847245_612x612 {
+            get {
+                object obj = ResourceManager.GetObject("istockphoto-1197847245-612x612", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lomo_montado_a_la_chorrillana {
+            get {
+                object obj = ResourceManager.GetObject("lomo-montado-a-la-chorrillana", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap picana_navidena_2974 {
+            get {
+                object obj = ResourceManager.GetObject("picana-navidena-2974", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sopa_mani_bolivia {
+            get {
+                object obj = ResourceManager.GetObject("sopa-mani-bolivia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Sopas_tipicas_de_bolivia_480x270 {
+            get {
+                object obj = ResourceManager.GetObject("Sopas-tipicas-de-bolivia-480x270", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

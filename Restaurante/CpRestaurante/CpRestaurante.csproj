@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,6 +28,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,7 +58,14 @@
     <Reference Include="C1.Win.C1Input.4, Version=4.0.20193.393, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Input.4.5.2, Version=4.5.20193.393, Culture=neutral, PublicKeyToken=7e7ff60f0c214f9a, processorArchitecture=MSIL" />
     <Reference Include="C1.Win.C1Ribbon.4.5.2, Version=4.5.20193.393, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -97,8 +107,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmBebida.resx">
+      <DependentUpon>FrmBebida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPlato.resx">
+      <DependentUpon>FrmPlato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
@@ -114,6 +130,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -209,5 +226,70 @@
   <ItemGroup>
     <None Include="Resources\239629135_239705251504946_8514359394720528580_n1.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comida-tipica-bolivia.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\comida-tradicional-bolivia-receta.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fricase-boliviano.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sopa-mani-bolivia.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sopas-tipicas-de-bolivia-480x270.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chorizos-chuquisaquenos-de-bolivia.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lomo-montado-a-la-chorrillana.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picana-navidena-2974.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CaldoDePollo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20674622-comida-rápida-de-fondo-sin-fisuras.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cóctel-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-soda-de-naranja-96.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\5c83164a83f9c0635de227c5be9461a6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iStock-487402642.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1140-diet-soda-study-esp.imgcache.rev.web.1000.575.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-cóctel-de-coco-641.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-reajuste-salarial-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\istockphoto-1197847245-612x612.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fast-food-set-icons-fastfood-background-doodle-fast-food-icons-seamless-pattern-with-food-icons-food-icons-on-white-background-hand-drown-pattern-with-fast-food-icons-free-vector.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
 </Project>

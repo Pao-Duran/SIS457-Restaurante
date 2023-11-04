@@ -17,6 +17,16 @@ namespace CpRestaurante
             InitializeComponent();
         }
 
+       
+        private void btnPlatos_Click(object sender, EventArgs e)
+        {
+            new FrmPlato().ShowDialog();
+        }
+
+        private void btnBebidas_Click(object sender, EventArgs e)
+        {
+            new FrmBebida().ShowDialog();
+        }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 

@@ -31,6 +31,7 @@
     <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="estado" Type="Int16" Nullable="false" />
     <NavigationProperty Name="detalleFactura" Relationship="RestauranteModel.fk_detalleFactura_Empleado" FromRole="Empleado" ToRole="detalleFactura" />
+    <NavigationProperty Name="Usuario" Relationship="RestauranteModel.fk_Usuario_Empleado" FromRole="Empleado" ToRole="Usuario" />
   </EntityType>
   <EntityType Name="Factura">
     <Key>
@@ -184,6 +185,14 @@
       <End Role="Platos" EntitySet="Platos" />
       <End Role="detalleFactura" EntitySet="detalleFactura" />
     </AssociationSet>
+    <EntitySet Name="Usuario" EntityType="RestauranteModel.Usuario" />
+    <AssociationSet Name="fk_Usuario_Empleado" Association="RestauranteModel.fk_Usuario_Empleado">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <FunctionImport Name="paUsuarioListar" ReturnType="Collection(RestauranteModel.paUsuarioListar_Result)">
+      <Parameter Name="parametro" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="paClienteListar_Result">
     <Property Type="Int32" Name="id" Nullable="false" />
@@ -350,4 +359,38 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="clave" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="idEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="usuarioRegistro" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="estado" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="RestauranteModel.fk_Usuario_Empleado" FromRole="Usuario" ToRole="Empleado" />
+  </EntityType>
+  <Association Name="fk_Usuario_Empleado">
+    <End Type="RestauranteModel.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="RestauranteModel.Usuario" Role="Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="idEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="paUsuarioListar_Result">
+    <Property Type="Int32" Name="id" Nullable="false" />
+    <Property Type="String" Name="nombre" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="clave" Nullable="false" MaxLength="10" />
+    <Property Type="Int32" Name="idEmpleado" Nullable="false" />
+    <Property Type="String" Name="usuarioRegistro" Nullable="false" MaxLength="20" />
+    <Property Type="DateTime" Name="fechaRegistro" Nullable="false" Precision="23" />
+    <Property Type="Int16" Name="estado" Nullable="false" />
+  </ComplexType>
 </Schema>
