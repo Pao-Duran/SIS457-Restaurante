@@ -10,3 +10,15 @@ E:\SIS 457 - Proyecto\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.csproj
 E:\SIS 457 - Proyecto\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.csproj.CopyComplete
 E:\SIS 457 - Proyecto\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.dll
 E:\SIS 457 - Proyecto\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.pdb
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\bin\Debug\CadRestaurante.dll.config
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\bin\Debug\CadRestaurante.dll
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\bin\Debug\CadRestaurante.pdb
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\bin\Debug\EntityFramework.dll
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\bin\Debug\EntityFramework.SqlServer.dll
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\bin\Debug\EntityFramework.xml
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\bin\Debug\EntityFramework.SqlServer.xml
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.csproj.AssemblyReference.cache
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.csproj.CoreCompileInputs.cache
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.csproj.CopyComplete
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.dll
+C:\Sis 457 Informatica\Proyecto Restaurant\sis457-Restaurante\Restaurante\CadRestaurante\obj\Debug\CadRestaurante.pdb
