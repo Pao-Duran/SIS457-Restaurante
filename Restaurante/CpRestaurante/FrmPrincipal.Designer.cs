@@ -60,7 +60,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Matura MT Script Capitals", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(280, 159);
+            this.label1.Location = new System.Drawing.Point(251, 394);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(262, 36);
             this.label1.TabIndex = 0;
@@ -71,7 +71,11 @@
             // c1Ribbon1
             // 
             this.c1Ribbon1.ApplicationMenuHolder = this.ribbonApplicationMenu1;
+<<<<<<< HEAD
 
+=======
+            //this.c1Ribbon1.AutoSizeElement = C1.Framework.AutoSizeElement.Width;
+>>>>>>> fe456780919215694d2f01d721c40b59b2db6caa
             this.c1Ribbon1.BottomToolBarHolder = this.ribbonBottomToolBar1;
             this.c1Ribbon1.ConfigToolBarHolder = this.ribbonConfigToolBar1;
             this.c1Ribbon1.Location = new System.Drawing.Point(0, 0);

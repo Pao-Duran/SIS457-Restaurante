@@ -113,9 +113,15 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap _5c83164a83f9c0635de227c5be9461a6 {
             get {
                 object obj = ResourceManager.GetObject("5c83164a83f9c0635de227c5be9461a6", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap _new {
+            get {
+                object obj = ResourceManager.GetObject("new", resourceCulture);
+>>>>>>> fe456780919215694d2f01d721c40b59b2db6caa
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +139,15 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap CaldoDePollo {
             get {
                 object obj = ResourceManager.GetObject("CaldoDePollo", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap cancel {
+            get {
+                object obj = ResourceManager.GetObject("cancel", resourceCulture);
+>>>>>>> fe456780919215694d2f01d721c40b59b2db6caa
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,6 +155,7 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap chorizos_chuquisaquenos_de_bolivia {
             get {
                 object obj = ResourceManager.GetObject("chorizos-chuquisaquenos-de-bolivia", resourceCulture);
@@ -166,6 +179,11 @@ namespace CpRestaurante.Properties {
         internal static System.Drawing.Bitmap comida_tradicional_bolivia_receta {
             get {
                 object obj = ResourceManager.GetObject("comida-tradicional-bolivia-receta", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap close {
+            get {
+                object obj = ResourceManager.GetObject("close", resourceCulture);
+>>>>>>> fe456780919215694d2f01d721c40b59b2db6caa
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,11 +201,17 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap fast_food_set_icons_fastfood_background_doodle_fast_food_icons_seamless_pattern_with_food_icons_food_icons_on_white_background_hand_drown_pattern_with_fast_food_icons_free_vector {
             get {
                 object obj = ResourceManager.GetObject("fast-food-set-icons-fastfood-background-doodle-fast-food-icons-seamless-pattern-w" +
                         "ith-food-icons-food-icons-on-white-background-hand-drown-pattern-with-fast-food-" +
                         "icons-free-vector", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
+>>>>>>> fe456780919215694d2f01d721c40b59b2db6caa
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -195,9 +219,15 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap fricase_boliviano {
             get {
                 object obj = ResourceManager.GetObject("fricase-boliviano", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap edit {
+            get {
+                object obj = ResourceManager.GetObject("edit", resourceCulture);
+>>>>>>> fe456780919215694d2f01d721c40b59b2db6caa
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -415,6 +445,7 @@ namespace CpRestaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+<<<<<<< HEAD
         internal static System.Drawing.Bitmap iStock_487402642 {
             get {
                 object obj = ResourceManager.GetObject("iStock-487402642", resourceCulture);
@@ -468,6 +499,11 @@ namespace CpRestaurante.Properties {
         internal static System.Drawing.Bitmap Sopas_tipicas_de_bolivia_480x270 {
             get {
                 object obj = ResourceManager.GetObject("Sopas-tipicas-de-bolivia-480x270", resourceCulture);
+=======
+        internal static System.Drawing.Bitmap save {
+            get {
+                object obj = ResourceManager.GetObject("save", resourceCulture);
+>>>>>>> fe456780919215694d2f01d721c40b59b2db6caa
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
